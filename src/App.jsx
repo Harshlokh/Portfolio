@@ -80,9 +80,9 @@ const App = () => {
 
   return (
     
-    <div className='font-semibold flex justify-center items-center bg-[#19191c] text-white'>
+    <div className='font-semibold flex justify-center -mt-5 items-center bg-[#19191c] text-white'>
       <div>
-    <div className='mx-5 sm:mx-3 py-[5vh] w-11/12 flex  justify-between max-w-[800px] sm:-mt-3 sm:items-center gap-5  flex-col sm:flex-row'>
+    <div className='mx-5 sm:mx-3 py-[5vh] w-11/12 flex  justify-between max-w-[800px]  sm:items-center gap-5  flex-col sm:flex-row'>
         <div className='text-2xl md:text-3xl  font-bold '>
        Hi ,I'm Harsh Lokhande
        </div>
@@ -105,7 +105,7 @@ const App = () => {
 
        </div>
        
-        <div className='mx-10 flex justify-start  items-center text-gray-custom -mt-6 sm:-mt-5'>
+        <div className='mx-10 flex justify-start  items-center text-gray-custom -mt-6 sm:-mt-7'>
               <ul className='list-disc'>
                 <li className='mt-2' >I'm a full-stack engineer from india.</li>
                 <li className='mt-2'>Currently exploring MERN and nestjs</li>
@@ -115,13 +115,13 @@ const App = () => {
               </ul>
           </div>
         
-          <div className="mt-7">
+          <div className="mt-4">
       {/* Category Buttons */}
       <div className="flex justify-start mx-5 items-center gap-3 mb-3">
         {['WebApps', 'Plugins', 'Research'].map((category) => (
           <button
             key={category}
-            className={`sm:w-auto w-[100px] text-sm rounded-[40px] border px-4 py-2 ${
+            className={`sm:w-auto w-[100px] text-[12px] rounded-[40px] border px-4  py-2 ${
               activeCategory === category
                 ? 'bg-gray-300 text-black'
                 : 'border-gray-300'
@@ -153,7 +153,7 @@ const App = () => {
 
            {/* Writings */}
 
-        <div className='mt-4 mx-5'>
+        <div className='mt-3 mx-5'>
            <h1 className='text-2xl font-bold mb-4'>Writings</h1>
            <p className='text-gray-custom'>Script to accept all invites on Linkedin</p>
            <p className='text-gray-custom'>Light and Dark Mode in React Native</p>
@@ -161,7 +161,7 @@ const App = () => {
        
          {/* Extra Works */}
   
-         <div className="mt-5 mb-6 flex flex-col items-start mx-5 ">
+         <div className="mt-3 mb-6 flex flex-col items-start mx-5 ">
   <h1 className="text-2xl font-bold mb-4">Why Hire Me</h1>
   <div className="flex items-center gap-3 mb-4">
     <img
