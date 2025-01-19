@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 const App = () => {
   
@@ -77,13 +77,28 @@ const App = () => {
       
     ],
   };
+ 
+  const [isBlurred, setIsBlurred] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBlurred(false);
+    }, 1000); // Blur for 2 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, []);
+
+  //     <div className='font-semibold flex justify-center -mt-5 items-center bg-[#19191c] text-white '>
+
 
   return (
     
-    <div className='font-semibold flex justify-center -mt-5 items-center bg-[#19191c] text-white'>
-      <div>
+    <div className="font-semibold flex justify-center -mt-5 items-center bg-[#19191c] text-white ">
+      <div  className={`text-2xl ${
+          isBlurred ? "blur-sm" : "blur-none"
+        } transition-all duration-300`}>
     <div className='mx-5 sm:mx-3 py-[5vh] w-11/12 flex  justify-between max-w-[800px]  sm:items-center gap-5  flex-col sm:flex-row'>
-        <div className='text-2xl md:text-3xl  font-bold '>
+        <div className='text-2xl   font-bold '>
        Hi ,I'm Harsh Lokhande
        </div>
             <div className='flex flex-row justify-start mx-1.5 sm:justify-center items-center gap-5'>
@@ -96,7 +111,7 @@ const App = () => {
                <div><a href=''>
                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a>
                </div>
-               <div className='text-gray-custom font-semibold hover:text-white hidden sm:block'>harshlokhande486@gmail.com</div>
+               <div className='text-gray-custom font-semibold hover:text-white hidden text-lg sm:block'>harshlokhande486@gmail.com</div>
                <div className='block sm:hidden '><svg xmlns="http://www.w3.org/2000/svg" className='h-6  ' viewBox="0 0 24 24" fill="white" width="48px" height="48px">
   <path d="M12 13.2L3.2 7.2V18c0 .55.45 1 1 1h15.6c.55 0 1-.45 1-1V7.2L12 13.2zm0-2.4L21.6 4H2.4L12 10.8zm-9.6-.6L12 14.4 21.6 10.2v7.8c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V10.2z"/>
 </svg>
@@ -105,7 +120,7 @@ const App = () => {
 
        </div>
        
-        <div className='mx-10 flex justify-start  items-center text-gray-custom -mt-6 sm:-mt-7'>
+        <div className='mx-10 flex justify-start text-sm items-center text-gray-custom -mt-6 sm:-mt-7'>
               <ul className='list-disc'>
                 <li className='mt-2' >I'm a full-stack engineer from india.</li>
                 <li className='mt-2'>Currently exploring MERN and nestjs</li>
@@ -121,7 +136,7 @@ const App = () => {
         {['WebApps', 'Plugins', 'Research'].map((category) => (
           <button
             key={category}
-            className={`sm:w-auto w-[100px] text-[12px] rounded-[40px] border px-4  py-2 ${
+            className={`sm:w-auto w-[100px] text-[12px] rounded-[40px] border px-5  py-1 ${
               activeCategory === category
                 ? 'bg-gray-300 text-black'
                 : 'border-gray-300'
@@ -138,7 +153,7 @@ const App = () => {
         {content[activeCategory].map((item, index) => (
           <div
             key={index}
-            className="flex flex-col sm:flex-row sm:gap-2"
+            className="flex flex-col text-sm sm:flex-row sm:gap-2"
           >
             <h1 className="text-white hover:text-yellow-300">
               <a href={item.link} target="_blank" rel="noopener noreferrer">
@@ -155,21 +170,21 @@ const App = () => {
 
         <div className='mt-3 mx-5'>
            <h1 className='text-2xl font-bold mb-4'>Writings</h1>
-           <p className='text-gray-custom'>Script to accept all invites on Linkedin</p>
-           <p className='text-gray-custom'>Light and Dark Mode in React Native</p>
+           <p className='text-gray-custom text-sm'>Script to accept all invites on Linkedin</p>
+           <p className='text-gray-custom text-sm'>Light and Dark Mode in React Native</p>
         </div>
        
          {/* Extra Works */}
   
          <div className="mt-3 mb-6 flex flex-col items-start mx-5 ">
   <h1 className="text-2xl font-bold mb-4">Why Hire Me</h1>
-  <div className="flex items-center gap-3 mb-4">
+  <div className="flex items-center gap-3 mb-4 ">
     <img
       className="h-7 w-7 rounded-full"
       src="https://thumbs.dreamstime.com/b/blue-technology-background-abstract-digital-tech-circle-copy-space-blue-technology-background-abstract-digital-tech-circle-340998157.jpg"
       alt="Hackathons"
     />
-    <p className="text-gray-custom text-sm sm:text-base">
+    <p className="text-gray-custom text-sm ">
      <font className="text-white"> Won</font> 2 Hackathons in 2024
     </p>
   </div>
@@ -179,7 +194,7 @@ const App = () => {
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWE3XRCu6fCTnf2SDNF3nKagOjMo-_tbdONg&s"
       alt="Certifications"
     />
-    <p className="text-gray-custom text-sm sm:text-base">
+    <p className="text-gray-custom text-sm ">
     <font className="text-white"> Certifications </font> in MERN, JAVA (SPRING MVC, SPRING BOOT), and Client
       Management
     </p>
@@ -190,7 +205,7 @@ const App = () => {
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpe-lzpfJuF1Ua3T8wHUuLuxaPExO98Wjr9jVKTn1615oVgdcaYzn7Ie-pq4qFJ7wzifA&usqp=CAU"
       alt="Internships"
     />
-    <p className="text-gray-custom text-sm sm:text-base">
+    <p className="text-gray-custom text-sm ">
       Well worsed in developing <font className="text-white"> Eccommerce Applications </font> along with a speciality in <font className="text-white"> designing </font> any website within some time.</p>
   </div>
 </div>
